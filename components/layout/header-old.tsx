@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -23,10 +21,15 @@ export default function Navbar({ bannerVisible, bannerHeight }: NavbarProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const toggleSubmenu = (name: string) => {
+    setOpenSubmenu((prev) => (prev === name ? null : name));
+  };
 
   if (!mounted) return null;
 
@@ -34,11 +37,13 @@ export default function Navbar({ bannerVisible, bannerHeight }: NavbarProps) {
     <>
       <header
         className="fixed z-40 w-full bg-background"
-        style={{ top: bannerVisible ? `${bannerHeight}px` : "0px" }}
+        style={{
+          top: bannerVisible ? `${bannerHeight}px` : '0px'
+        }}
       >
+        {/* 🧠 Wrap only the nav in container */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center justify-between py-4">
-            {/* Logo */}
             <div className="flex pr-10">
               <Link
                 href="/"
@@ -47,8 +52,7 @@ export default function Navbar({ bannerVisible, bannerHeight }: NavbarProps) {
                 Cognetix
               </Link>
             </div>
-
-            {/* Mobile menu button */}
+            {/* Mobile menu */}
             <div className="flex lg:hidden">
               {!mobileMenuOpen && (
                 <div className="flex items-center space-x-4">
@@ -59,68 +63,63 @@ export default function Navbar({ bannerVisible, bannerHeight }: NavbarProps) {
                     className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
                   >
                     <span className="sr-only">Open main menu</span>
-                    <Menu className="h-6 w-6 text-primary" />
+                    <Menu className="h-6 w-6 text-primary" aria-hidden="true" />
                   </button>
                 </div>
               )}
             </div>
 
-            {/* Desktop nav */}
-            <div className="hidden lg:flex lg:gap-x-10">
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex lg:gap-x-12">
               {navigation.map((item) => (
-                <div
-                  key={item.name}
-                  className="relative group"
-                >
-                  {/* Main nav link */}
-                  <div className="flex items-center space-x-1 cursor-pointer">
+                <div key={item.name} className="relative">
+                  <div
+                    className="flex items-center cursor-pointer"
+                    onClick={() => toggleSubmenu(item.name)}
+                  >
                     {item.href ? (
-                     <Link
-                     href={item.href}
-                     className={classNames(
-                       "text-sm font-medium leading-6 transition-colors border-b-2",
-                       router.pathname === item.href
-                         ? "text-primary border-primary"
-                         : "text-navlink border-transparent hover:text-primary hover:border-primary"
-                     )}
-                   >
-                     {item.name}
-                   </Link>
-                   
+                      <Link
+                        href={item.href}
+                        className={classNames(
+                          "text-sm font-normal leading-6",
+                          router.pathname === item.href
+                            ? "text-primary border-b-2 border-primary"
+                            : "text-navlink hover:text-primary hover:border-b-2 hover:border-primary"
+                        )}
+                      >
+                        {item.name}
+                      </Link>
                     ) : (
-                      <span className="text-sm font-medium leading-6 text-navlink cursor-default">
+                      <span className="text-sm font-normal leading-6 text-navlink cursor-default">
                         {item.name}
                       </span>
                     )}
-
-                    {/* Chevron */}
                     {item.subitems && (
-                      <ChevronDown className="h-4 w-4 text-navlink group-hover:rotate-180 group-hover:text-primary transition-transform duration-300 ease-in-out" />
+                      <ChevronDown className="h-4 w-4 ml-1 text-black dark:text-white" />
                     )}
                   </div>
 
-                  {/* Submenu */}
-                  {item.subitems && (
-                    <div className="absolute left-0 mt-3 w-56 bg-background border border-border rounded-md shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-200 z-50"
+                  {item.subitems && openSubmenu === item.name && (
+                    <div
+                      className="absolute left-0 mt-4 w-52 bg-background border border-border rounded-md shadow-lg"
+                      onMouseLeave={() => setOpenSubmenu(null)}
                     >
-                      <div className="py-1 cursor-default">
-                        {item.subitems.map((subitem) => (
-                          <Link
-                            key={subitem.name}
-                            href={subitem.href || "#"}
-                            className="block px-4 py-2 text-sm font-medium text-navlink hover:bg-navHover hover:text-primary transition cursor-pointer"
-                          >
-                            {subitem.name}
-                          </Link>
-                        ))}
-                      </div>
+                      {item.subitems.map((subitem) => (
+                        <Link
+                          key={subitem.name}
+                          href={subitem.href || "#"}
+                          className="block px-4 py-2 text-sm bg-background hover:bg-navHover"
+                        >
+                          {subitem.name}
+                        </Link>
+                      ))}
                     </div>
                   )}
                 </div>
               ))}
             </div>
 
-            {/* Theme Toggle Right */}
+            {/* Theme toggle right */}
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <ThemeToggle themeTextVisible={false} />
             </div>
@@ -128,7 +127,7 @@ export default function Navbar({ bannerVisible, bannerHeight }: NavbarProps) {
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu component */}
       <MobileMenu
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}

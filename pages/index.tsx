@@ -33,8 +33,8 @@ export default function Home() {
           Your AI-powered solution for modern challenges. We help businesses leverage the power of artificial intelligence to drive growth and innovation.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Button variant="default">Get Started</Button>
-          <Button variant="outline">Contact Us</Button>
+          <Button variant="default" size="lg">Get Started</Button>
+          <Button variant="outline" size="lg">Contact Us</Button>
         </div>
       </section>
 
@@ -53,6 +53,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      
     </div>
   );
 }

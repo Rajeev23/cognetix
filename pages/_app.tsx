@@ -31,10 +31,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={inter.className}>
+    <div className={`${inter.className} transition-colors duration-200`}>
       <Layout>
-        <Component {...pageProps} className="" />
+        <Component {...pageProps} />
       </Layout>
     </div>
   )
-} 
+}

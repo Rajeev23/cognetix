@@ -2,17 +2,14 @@
 export const navigation = [
     { name: "Home", href: "/" },
     {
-      name: "Services",
-      // href: "/",
+      name: "Components",
       subitems: [
         { name: "AI Solutions", href: "/features/ai" },
-        { name: "Stripe Payment", href: "/pricing" },
-        { name: "Razorpay Payment", href: "/aboutus" },
-        { name: "Projects", href: "/projects" },
+        { name: "Installation", href: "/aboutus" },
+        { name: "Introduction", href: "/projects" },
       ],
     },
-    { name: "Blog", href: "/blog" },
+    { name: "Doc", href: "/blog" },
     { name: "About Us", href: "/about" },
     { name: "Contact Us", href: "/contact" },
-    { name: "Pricing", href: "/pricing" },
   ];

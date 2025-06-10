@@ -36,15 +36,16 @@ export default function Layout({
       <div className={cn(
         "min-h-screen",
         "bg-background text-foreground",
-        "transition-colors duration-200"
+        
       )}>
         <Navbar 
           bannerVisible={isBannerVisible}
           bannerHeight={bannerHeight}
         />
+        
         <main
           className={cn(
-            "transition-all duration-300",
+            
             "pt-[var(--navbar-height)]"
           )}
           style={{ "--navbar-height": `${navbarHeight}px` } as React.CSSProperties}

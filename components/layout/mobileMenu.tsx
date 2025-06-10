@@ -20,7 +20,7 @@ export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }: Mobile
     <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
       <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0">
         <div className="flex h-16 items-center justify-between px-4 border-b">
-          <SheetTitle className="text-lg font-semibold">Menu</SheetTitle>
+          <SheetTitle className="text-lg font-semibold">Cognetix</SheetTitle>
           {/* <Button
             variant="ghost"
             size="icon"
@@ -66,9 +66,9 @@ export default function MobileMenu({ mobileMenuOpen, setMobileMenuOpen }: Mobile
               </div>
             ))}
           </nav>
-          <div className="p-4 border-t">
+          {/* <div className="p-4 border-t">
             <ThemeToggle themeTextVisible={true} />
-          </div>
+          </div> */}
         </div>
       </SheetContent>
     </Sheet>

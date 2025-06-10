@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
+import { ChevronRight } from "lucide-react";
 // Card data array
 const cardData = [
   {
@@ -26,8 +26,10 @@ const cardData = [
 export default function Home() {
   return (
     <div className="flex flex-col">
+      
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center gap-8 min-h-screen px-4">
+      
         <h1 className="text-4xl font-bold tracking-tight">Welcome to Cognetix</h1>
         <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
           Your AI-powered solution for modern challenges. We help businesses leverage the power of artificial intelligence to drive growth and innovation.

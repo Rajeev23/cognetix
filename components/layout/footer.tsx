@@ -59,18 +59,15 @@
     const currentYear = new Date().getFullYear();
   
     return (
-      <footer className=" container w-full py-8 px-4 sm:px-6 lg:px-8 border-t border-border bg-background">
+      <footer className=" container w-full py-8 px-4 sm:px-6 lg:px-8  bg-background">
         <div className="container mx-auto lg:px-[5rem]">
-          {/* Main Footer Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
-            {/* Brand Section */}
+          {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
             <div className="flex flex-col items-center lg:items-start">
               <span className="text-xl font-bold">Cognetix</span>
               <p className="text-sm mt-3">
                 &copy; {currentYear} Kalrovis. All rights reserved.
               </p>
               
-              {/* Social Media Links */}
               <ul className="flex space-x-4 mt-4">
                 {socialMediaIcons.map(({ href, label, Icon }) => (
                   <li key={label}>
@@ -85,13 +82,11 @@
                 ))}
               </ul>
   
-              {/* Theme Toggle */}
               <div className="mt-6">
                 
               </div>
             </div>
   
-            {/* Footer Navigation */}
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center sm:text-left">
               {footerSections.map((section) => (
                 <div key={section.title}>
@@ -113,12 +108,12 @@
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
   
           {/* Footer Bottom */}
-          <div className="border-t border-border pt-5 text-center -mx-4 sm:-mx-6 lg:-mx-8">
+          <div className=" text-center -mx-4 sm:-mx-6 lg:-mx-8">
             <p className="text-sm">
-              Crafted with ❤️ by Kalrovis
+              Crafted with ❤️ by Cognetix
             </p>
           </div>
         </div>

@@ -7,6 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
+import AnimatedText from "@/components/core/animated-text";
+
 // Card data array
 const cardData = [
   {
@@ -30,7 +32,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center gap-8 min-h-screen px-4">
       
-        <h1 className="text-4xl font-bold tracking-tight">Welcome to Cognetix</h1>
+        {/* <h1 className="text-4xl font-bold tracking-tight">Welcome to Cognetix</h1> */}
+        <AnimatedText
+      text="Welcome to Cognetix"
+      className="text-4xl font-bold"
+      animationType="letters"
+      staggerDelay={0.08}
+      duration={0.6}
+    />
         <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
           Your AI-powered solution for modern challenges. We help businesses leverage the power of artificial intelligence to drive growth and innovation.
         </p>
